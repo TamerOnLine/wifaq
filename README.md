@@ -77,6 +77,24 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
 
 ---
 
+## 📦 Downloads
+
+### 🚀 Ready-to-Run Executable:
+- 🪟 [Download for Windows – run.exe](https://github.com/TamerOnLine/wifaq/releases/latest/download/run.exe)
+
+### 💾 Source Code:
+- [Source code (ZIP)](https://github.com/TamerOnLine/wifaq/archive/refs/tags/v1.0.0.zip)
+- [Source code (TAR.GZ)](https://github.com/TamerOnLine/wifaq/archive/refs/tags/v1.0.0.tar.gz)
+
+---
+
+> 🛠️ Or clone the repository manually:
+```bash
+git clone https://github.com/TamerOnLine/wifaq.git
+```
+
+---
+
 ## 👨‍💻 Author
 
 - **Tamer Hamad Faour**  
