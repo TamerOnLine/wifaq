@@ -1,83 +1,88 @@
+# 🥮 Wifaq – Arabic Abjad Value & Magic Square Generator
 
-# 🧮 Wifaq – Arabic Abjad Value & Magic Square Generator
-
----
-
-**Wifaq** is a simple Flask-based web app that calculates the **Abjad numerical value** of Arabic text and generates a compatible **magic square** (also known as *Wifaq*) that mathematically aligns with that value.
-
----
-
-## 🚀 Features
-
-- 🔤 Calculate the total numeric value of Arabic text using the **Abjad system**.
-- 🧮 Automatically generate a magic square based on the value:
-  - Odd magic squares
-  - Doubly even magic squares (n % 4 == 0)
-  - Singly even magic squares (n % 4 == 2)
-- 📐 Auto-select square size and multiplier to match the total value.
-- 🌐 Fully Arabic, mobile-friendly web interface with RTL layout.
+**Wifaq** is a lightweight, Flask-based web application designed to calculate the **Abjad numerical value** of Arabic text and generate a mathematically aligned **magic square** (*Wifaq*) based on that value.
 
 ---
 
 ## 📸 Screenshot
 
-<img src="im/Screenshot.png" alt="Wifaq Screenshot" width="600" />
+![Screenshot](im/Screenshot.png)
 
 ---
 
-## 🛠️ Usage
+## 🎯 Features
 
-### 1. Install requirements
+* 🎤 Calculates Arabic text numeric values using the **Abjad system**.
+* 🥮 Generates appropriate magic squares:
 
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Run the app
-
-```bash
-python run.py
-```
-
-Then open your browser at: [http://localhost:1010](http://localhost:1010)
+  * Odd, singly even, and doubly even square types.
+* 📐 Auto-selects size and multiplier to match input total.
+* 📱 RTL web UI in Arabic; responsive and mobile-friendly.
 
 ---
 
-## 🧠 How Abjad Value Works
+## 🛠️ Tech Stack
 
-The app uses the **Abjad numerals**, an old system assigning numeric values to Arabic letters. For example:
-
-| Letter | Value |
-|--------|-------|
-| ا، أ، إ، آ | 1 |
-| ب        | 2 |
-| ج        | 3 |
-| ...      | ... |
-| غ        | 1000 |
-
-The value of the input text is the sum of these letter values. A suitable magic square is then generated to match the total.
+* Python 3
+* Flask (Web Framework)
+* HTML + CSS (for RTL layout and responsive design)
 
 ---
 
-## 🧩 Project Structure
+## 📦 Installation Instructions
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/TamerOnLine/tameronline-wifaq.git
+   cd tameronline-wifaq
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the application:**
+
+   ```bash
+   python run.py
+   ```
+
+4. **Open your browser:**
+
+   Navigate to [http://localhost:1010](http://localhost:1010)
+
+---
+
+## 🚀 Usage Guide
+
+1. Enter Arabic text into the input area.
+2. Click **احسب** to compute the Abjad value and generate the corresponding Wifaq square.
+3. View the results including:
+
+   * Numeric value.
+   * Magic square size and multiplier.
+   * Rendered square in a table format.
+
+---
+
+## 📂 Project Structure
 
 ```
 tameronline-wifaq/
-├── README.md              ← This file
-├── LICENSE                ← Apache 2.0 license
-├── requirements.txt       ← Flask dependency
-└── run.py                 ← Main Flask app
+├── README.md              ← Project documentation
+├── LICENSE                ← Apache 2.0 License
+├── requirements.txt       ← Python package requirements
+├── run.py                 ← Main Flask application
+└── im/
+    └── Screenshot.png     ← App UI screenshot
 ```
 
 ---
 
-## 📄 License
-
-This project is licensed under the [Apache 2.0 License](LICENSE).
-
----
-
-## 📦 Downloads
+## 📅 Downloads
 
 ### 🚀 Ready-to-Run Executable:
 - 🪟 [Download for Windows – run.exe](https://github.com/TamerOnLine/wifaq/releases/latest/download/run.exe)
@@ -88,19 +93,13 @@ This project is licensed under the [Apache 2.0 License](LICENSE).
 
 ---
 
-> 🛠️ Or clone the repository manually:
-```bash
-git clone https://github.com/TamerOnLine/wifaq.git
-```
+## 🧾 License
+
+Licensed under the [Apache 2.0 License](LICENSE).
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💼 Author and Contact Info
 
-- **Tamer Hamad Faour**  
-- GitHub: [@TamerOnLine](https://github.com/TamerOnLine)  
-
----
-
-
-
+* **Tamer Hamad Faour**
+* GitHub: [@TamerOnLine](https://github.com/TamerOnLine)
