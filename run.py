@@ -28,6 +28,20 @@ abjad_values = {
 def calculate_abjad_value(text):
     return sum(abjad_values.get(char, 0) for char in text)
 
+# 🔍 جدول تفاصيل الحروف حسب الكلمات + المجموع
+def get_detailed_abjad_table(text):
+    table = []
+    for word in text.split():
+        row = []
+        total = 0
+        for char in word:
+            if char in abjad_values:
+                value = abjad_values[char]
+                total += value
+                row.append(f"{char} = {value}")
+        table.append([total, word] + row)
+    return table
+
 # توليد المربعات السحرية بأنواعها
 def generate_odd_magic_square(n):
     square = [[0] * n for _ in range(n)]
@@ -93,14 +107,15 @@ def recommend_waffaq_type(value):
 def format_magic_square(square):
     return "\n".join("<tr>" + "".join(f"<td>{val}</td>" for val in row) + "</tr>" for row in square)
 
-# الواجهة الرئيسية
 @app.route("/", methods=["GET", "POST"])
 def index():
     text = request.form.get("text", "")
     cleaned_text = value = size = multiplier = table = None
+    details_table = []
     if text:
         cleaned_text = normalize_arabic_text_for_wifaq(text)
         value = calculate_abjad_value(cleaned_text)
+        details_table = get_detailed_abjad_table(cleaned_text)
         size, multiplier, square = recommend_waffaq_type(value)
         table = format_magic_square(square) if square else None
     return render_template_string('''
@@ -120,7 +135,7 @@ def index():
       text-align: center;
     }
     .container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
       background: white;
       padding: 20px;
@@ -153,12 +168,10 @@ def index():
       margin: 20px auto;
       border-collapse: collapse;
       width: 100%;
-      max-width: 500px;
     }
-    td {
+    td, th {
       border: 1px solid #000;
       padding: 10px;
-      width: 50px;
       text-align: center;
     }
     h4 span {
@@ -179,7 +192,7 @@ def index():
     </form>
 
     {% if cleaned_text %}
-      <h4>🧹 النص المدخل: <span style="color:darkgreen;">{{ cleaned_text }}</span></h4>
+      <h4>🧹 النص المنظف: <span style="color:darkgreen;">{{ cleaned_text }}</span></h4>
     {% endif %}
 
     {% if value %}
@@ -191,11 +204,29 @@ def index():
       {% else %}
         <p>⚠️ لا يوجد وفق مناسب لهذه القيمة.</p>
       {% endif %}
+
+      {% if details_table %}
+        <h4>🔍 جدول تفاصيل الحروف حسب الكلمات:</h4>
+        <table>
+          <tr>
+            <th>🔢 المجموع</th>
+            <th>📘 الكلمة</th>
+            <th colspan="10">🧮 الحروف = القيم</th>
+          </tr>
+          {% for row in details_table %}
+            <tr>
+              {% for col in row %}
+                <td>{{ col }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </table>
+      {% endif %}
     {% endif %}
   </div>
 </body>
 </html>
-''', text=text, cleaned_text=cleaned_text, value=value, size=size, multiplier=multiplier, table=table)
+''', text=text, cleaned_text=cleaned_text, value=value, size=size, multiplier=multiplier, table=table, details_table=details_table)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=1010, debug=True)
